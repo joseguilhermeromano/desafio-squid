@@ -1,0 +1,18 @@
+body {
+  background-image: url("../imgs/background.svg");
+  background-color: #fff;
+  background-size: 168% auto;
+  background-position: 50% 0%;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+}
+
+#logo {
+  content: url("../imgs/logo.svg");
+  width: 25%;
+  /* min-width: 200px; */
+  margin: 1%;
+}
