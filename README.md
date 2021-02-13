@@ -13,4 +13,4 @@ O endpoint https://vision.squidit.com.br/v1/feed/test trará o feed de postagem 
 
 ## Resultado Final
 
-![Resultado](assets/result.jpeg "Resultado")
+![Resultado](assets/imgs/result.jpeg "Resultado")
