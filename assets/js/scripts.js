@@ -8,21 +8,42 @@ const getPostsViaAjax  = () => {
 
   fetch(url)
     .then(resp => resp.json())
-    // .then(json => console.log(json))
     .then(json => json.medias.forEach(element => {
-      const linkImagem = element.imagens.thumbnail.url 
-      replicaImagens(linkImagem)     
+
+      console.log(json)
+      const imageLink = element.imagens.thumbnail.url 
+      const user = element.usuario.username
+      const upvotes = element.upvotes
+      const comments = element.comentarios
+      const legends = element.legenda
+
+      let createdAt = new Date(element.criadoEm)
+      createdAt = dateFormat(createdAt)
+
+      replicaImagens(imageLink, user, upvotes, comments, createdAt, legends) 
+
     }))
 }
 
-const replicaImagens = linkImagem => {
+const dateFormat = date => {
+  const day = addZero(date.getDate()).toString()
+  const month = addZero(date.getMonth() + 1).toString()
+  const year = date.getFullYear()
+  const hour = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
+  return `${day}/${month}/${year} ${hour}`
+}
+
+const addZero = number => number <= 9 ? "0" + number : number;
+
+const replicaImagens = (imageLink, user, upvotes, comments, createdAt, legends) => {
 
   const post = document.createElement("div")
   post.classList.add("post")
 
   const img = document.createElement("img")
   img.classList.add("post-img")
-  img.src = linkImagem
+  img.src = imageLink
 
   post.appendChild(img)
 
@@ -31,7 +52,10 @@ const replicaImagens = linkImagem => {
 
   const details = document.createElement("div")
   details.classList.add("details")
-  details.innerHTML = `<span><i class="fas fa-heart"></i> 200</span><span><i class="fas fa-heart"></i> 200</span><span><i class="fas fa-heart"></i> 200</span>`
+  details.innerHTML = `<p><i class="fas fa-at"></i> ${user}</p>
+                       <p><i class="fas fa-heart"></i> ${upvotes}</p>
+                       <p><i class="fas fa-comment"></i> ${comments}</p> 
+                       <p><i class="fas fa-calendar"></i> ${createdAt}</p>`
 
   overlay.appendChild(details)
 

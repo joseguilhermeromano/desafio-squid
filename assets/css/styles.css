@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
   background-image: url("../imgs/background.svg");
   background-color: #fff;
@@ -28,14 +32,12 @@ header {
 }
 
  .flex-container {
-  /* position:absolute; */
   display:flex;
   flex-direction: row;
-  /* border: solid 4px;  */
+  /*border: solid 4px;*/
   justify-content: flex-start;
   align-items: stretch;
-  align-content: space-around;
-  line-height: 200px;
+  /* line-height: 200px; */
   text-align: center;
   margin:0px auto;
   left:0;
@@ -46,14 +48,12 @@ header {
 .post {
   /* border: solid 5px dodgerblue; */
   position: relative;
-  font-size: 40px;
   margin: 12px;
   height: 200px;
   cursor: pointer;
 }
 
 .flex-container .post{
-  box-sizing: border-box;
   flex-basis: 150px;
 }
 
@@ -68,7 +68,7 @@ header {
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; 
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -80,37 +80,23 @@ header {
   opacity: .75;
 }
 
-/* .details {
-  display:flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.details span {
-  display:inline-block;
-  padding:7px 10px;
-  color:white;
-  font-size: 25px;
-  overflow: hidden;
-} */
-
 .details {
-  display: inline-block;
   color: white;
-  font-size: 25px;
-  top: 0%;
-  left: 0%;
-  word-wrap: break-word;
-  white-space: normal;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  -webkit-transform: translate(-46%, -50%);
+  -ms-transform: translate(-46%, -50%);
+  transform: translate(-46%, -50%);
   text-align: center;
-  overflow: hidden;
-  float: left;
+  z-index: 2;
 }
 
 @media screen and (max-width: 498px) { .flex-container { width: 170px; } #logo{width: 40%; margin-bottom: 2vh;} }
 @media screen and (min-width: 498px) and (max-width: 652px) { .flex-container { width: 350px; } #logo{width: 40%; margin-bottom: 2vh;} }
 @media screen and (min-width: 652px) and (max-width: 970px) { .flex-container { width: 527px;  } #logo{width: 40%; margin-bottom: 2vh;} } 
 @media screen and (min-width: 970px) and (max-width: 1273px) { .flex-container { width: 700px; } #logo{width: 40%; margin-bottom: 2vh;} }
-@media screen and (min-width: 1273px) and (max-width: 1590px) { .flex-container { width: 883px; } }
+@media screen and (min-width: 1273px) and (max-width: 1590px) { .flex-container { width: 1050px; } }
 @media screen and (min-width: 1590px) and (max-width: 1920px) { .flex-container { width: 60%; } }  
 @media screen and (min-width: 1920px) { .flex-container { width: 57%; } }  
