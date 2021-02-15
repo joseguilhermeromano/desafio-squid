@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+
   getPostsViaAjax();
+
 });
 
 const getPostsViaAjax  = () => {
@@ -15,12 +17,12 @@ const getPostsViaAjax  = () => {
       const user = element.usuario.username
       const upvotes = element.upvotes
       const comments = element.comentarios
-      const legends = element.legenda
+      const postLink = element.link
 
       let createdAt = new Date(element.criadoEm)
       createdAt = dateFormat(createdAt)
 
-      replicaImagens(imageLink, user, upvotes, comments, createdAt, legends) 
+      replicaImagens(imageLink, user, upvotes, comments, createdAt, postLink) 
 
     }))
 }
@@ -31,15 +33,16 @@ const dateFormat = date => {
   const year = date.getFullYear()
   const hour = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
-  return `${day}/${month}/${year} ${hour}`
+  return ` ${day}/${month}/${year} ${hour}`
 }
 
 const addZero = number => number <= 9 ? "0" + number : number;
 
-const replicaImagens = (imageLink, user, upvotes, comments, createdAt, legends) => {
+const replicaImagens = (imageLink, user, upvotes, comments, createdAt, postLink) => {
 
   const post = document.createElement("div")
   post.classList.add("post")
+  post.setAttribute('onclick', `openPost('${postLink}')`)
 
   const img = document.createElement("img")
   img.classList.add("post-img")
@@ -65,3 +68,5 @@ const replicaImagens = (imageLink, user, upvotes, comments, createdAt, legends) 
   squidposts.appendChild(post)
 
 }
+
+const openPost = (link) => window.open(link)
