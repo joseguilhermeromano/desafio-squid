@@ -49,7 +49,7 @@ header {
   /* border: solid 5px dodgerblue; */
   position: relative;
   margin: 12px;
-  height: 200px;
+  height: auto;
   cursor: pointer;
 }
 
@@ -60,7 +60,7 @@ header {
 .post-img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .overlay {

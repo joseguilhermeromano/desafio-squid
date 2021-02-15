@@ -1,30 +1,65 @@
+
+const arrayPages = []
+
 document.addEventListener("DOMContentLoaded", function() {
 
   getPostsViaAjax();
 
 });
 
-const getPostsViaAjax  = () => {
+const getPostsViaAjax  = (newUrl = null) => {
 
-  const url = "https://vision.squidit.com.br/v1/feed/test"
+  let url = "https://vision.squidit.com.br/v1/feed/test"
+
+  if(newUrl){
+
+    const encodeNewUrl = encodeURIComponent(newUrl) 
+    url = `https://vision.squidit.com.br/v1/feed/test?nextUrl=${encodeNewUrl}`
+  }
 
   fetch(url)
     .then(resp => resp.json())
-    .then(json => json.medias.forEach(element => {
+    .then(json => {
 
-      console.log(json)
-      const imageLink = element.imagens.thumbnail.url 
-      const user = element.usuario.username
-      const upvotes = element.upvotes
-      const comments = element.comentarios
-      const postLink = element.link
+      const maxid = json.pagination.max_id
 
-      let createdAt = new Date(element.criadoEm)
-      createdAt = dateFormat(createdAt)
+      if(!arrayPages.includes(maxid)){
+        arrayPages.push(maxid)
+        iteraPosts(json.medias, maxid)
+        const nextUrl = json.pagination.next_url
+        document.addEventListener('scroll', e => loadData(e, nextUrl)) 
+      }
 
-      replicaImagens(imageLink, user, upvotes, comments, createdAt, postLink) 
+    })
+}
 
-    }))
+const iteraPosts = (medias) => {
+  medias.forEach(element => {
+
+    const imageLink = element.imagens.thumbnail.url 
+    const user = element.usuario.username
+    const upvotes = element.upvotes
+    const comments = element.comentarios
+    const postLink = element.link
+
+    let createdAt = new Date(element.criadoEm)
+    createdAt = dateFormat(createdAt)
+
+    replicaImagens(imageLink, user, upvotes, comments, createdAt, postLink) 
+
+  })
+}
+
+const loadData = (e, url) => {
+  const windowHeight = window.screen.height
+  const documentHeight = document.body.clientHeight
+  const scrollTop =  window.pageYOffset || document.documentElement.scrollTop
+
+  // console.log(`${url}`)
+
+  if( documentHeight <= (scrollTop + windowHeight) ){
+    getPostsViaAjax(url)
+  }
 }
 
 const dateFormat = date => {
@@ -66,7 +101,6 @@ const replicaImagens = (imageLink, user, upvotes, comments, createdAt, postLink)
 
   const squidposts = document.querySelector("div[squid-posts]")
   squidposts.appendChild(post)
-
 }
 
 const openPost = (link) => window.open(link)
