@@ -37,7 +37,7 @@ header {
   /*border: solid 4px;*/
   justify-content: flex-start;
   align-items: stretch;
-  /* line-height: 200px; */
+  /* line-height: 185px; */
   text-align: center;
   margin:0px auto;
   left:0;
@@ -52,7 +52,9 @@ header {
   align-items:center;
   justify-content:center;  
   margin: 12px;
-  height: auto;
+  max-height: 185px;
+  height: 185px;
+  min-height: 185px;
   cursor: pointer;
   background-color: #fff;
   border-radius: 15px;
@@ -108,8 +110,8 @@ header {
   z-index: 2;
 }
 
-@media screen and (max-width: 498px) { .flex-container { width: 170px; } #logo{width: 40%; margin-bottom: 2vh;} }
-@media screen and (min-width: 498px) and (max-width: 652px) { .flex-container { width: 350px; } #logo{width: 40%; margin-bottom: 2vh;} }
+@media screen and (max-width: 498px) { .flex-container { width: 170px;  display:flex; flex-direction: row; justify-content: flex-start;} #logo{width: 40%; margin-bottom: 2vh;} .details{ font-size: 10px;} }
+@media screen and (min-width: 498px) and (max-width: 652px) { .flex-container { width: 350px; } #logo{width: 40%; margin-bottom: 2vh;} .details{font-size: 10px;} }
 @media screen and (min-width: 652px) and (max-width: 970px) { .flex-container { width: 527px;  } #logo{width: 40%; margin-bottom: 2vh;} } 
 @media screen and (min-width: 970px) and (max-width: 1273px) { .flex-container { width: 700px; } #logo{width: 40%; margin-bottom: 2vh;} }
 @media screen and (min-width: 1273px) and (max-width: 1590px) { .flex-container { width: 1050px; } }
