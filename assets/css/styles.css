@@ -110,8 +110,18 @@ header {
   z-index: 2;
 }
 
-@media screen and (max-width: 498px) { .flex-container { width: 170px;  display:flex; flex-direction: row; justify-content: flex-start;} #logo{width: 40%; margin-bottom: 2vh;} .details{ font-size: 10px;} }
-@media screen and (min-width: 498px) and (max-width: 652px) { .flex-container { width: 350px; } #logo{width: 40%; margin-bottom: 2vh;} .details{font-size: 10px;} }
+@media screen and (max-width: 498px) { 
+  .flex-container { width: 170px;  display:flex; flex-direction: row; justify-content: flex-start;} 
+  #logo{width: 40%; margin-bottom: 2vh;} 
+  .details{ font-size: 10px;} 
+}
+
+@media screen and (min-width: 498px) and (max-width: 652px) { 
+  .flex-container { width: 350px; } 
+  #logo{width: 40%; margin-bottom: 2vh;} 
+  .details{font-size: 10px;} 
+}
+
 @media screen and (min-width: 652px) and (max-width: 970px) { .flex-container { width: 527px;  } #logo{width: 40%; margin-bottom: 2vh;} } 
 @media screen and (min-width: 970px) and (max-width: 1273px) { .flex-container { width: 700px; } #logo{width: 40%; margin-bottom: 2vh;} }
 @media screen and (min-width: 1273px) and (max-width: 1590px) { .flex-container { width: 1050px; } }
