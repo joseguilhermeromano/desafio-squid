@@ -17,7 +17,7 @@ const getPostsViaAjax  = (newUrl = null) => {
     url = `https://vision.squidit.com.br/v1/feed/test?nextUrl=${encodeNewUrl}`
   }
 
-  fetch(url)
+  fetchLoader(url)
     .then(resp => resp.json())
     .then(json => {
 
@@ -31,6 +31,7 @@ const getPostsViaAjax  = (newUrl = null) => {
       }
 
     })
+    .then(setTimeout(hideLoader, 5000))
 }
 
 const iteraPosts = (medias) => {
@@ -104,3 +105,15 @@ const replicaImagens = (imageLink, user, upvotes, comments, createdAt, postLink)
 }
 
 const openPost = (link) => window.open(link)
+
+const fetchLoader = (url) => {
+  const loading = document.getElementById("loading")
+  loading.classList.remove("hidden")
+
+  return fetch(url)
+}
+
+const hideLoader = () => {
+  const loading = document.getElementById("loading")
+  loading.classList.add("hidden")
+}

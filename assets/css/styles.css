@@ -127,3 +127,44 @@ header {
 @media screen and (min-width: 1273px) and (max-width: 1590px) { .flex-container { width: 1050px; } }
 @media screen and (min-width: 1590px) and (max-width: 1920px) { .flex-container { width: 60%; } }  
 @media screen and (min-width: 1920px) { .flex-container { width: 57%; } }  
+
+.loading {
+  content: "Carregando publicações";
+  background-color: #fff;
+  color: #000;
+  opacity: 0.75;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  font-size: 20px;
+   
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.load-logo{
+  max-width:100px;
+  overflow:hidden;
+}
+
+.hidden{
+  display: none;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.15em;    
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.5em;    
+  }
+}
